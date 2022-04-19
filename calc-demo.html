@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <title>User App</title>
+
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script src="calcInput.js"></script>
+    <div class="container">
+      <h3>Calc Input</h3>
+      <calc-input id="calcInput"></calc-input>
+      <p><strong>Value:</strong> <span id="display-value"></span></p>
+      <p><strong>Text:</strong> <span id="display-text"></span></p>
+      <p><strong>Valid:</strong> <span id="display-valid"></span></p>
+      <button type="button" id="setValueButton" >Set Value</button>
+      <input type="text" id="setValueInput"></input>
+      <br>
+      <button type="button" id="setTextButton" >Set Text</button>
+      <input type="text" id="setTextInput"></input>
+      <br>
+    </div>
+  </body>
+  <script type="text/javascript">
+    var setValueButton = document.getElementById("setValueButton")
+    var setTextButton = document.getElementById("setTextButton")
+    var calcInput = document.getElementById("calcInput")
+    var setValueInput = document.getElementById("setValueInput")
+    var setTextInput = document.getElementById("setTextInput")
+    setValueButton.addEventListener("click", (event) => {
+      calcInput.value = setValueInput.value;
+    });
+
+    setTextButton.addEventListener("click", (event) => {
+      calcInput.value = setTextInput.value;
+    });
+
+    calcInput.addEventListener("change", (event) => {
+      var _calcInputValue = event.target.value;
+
+      if (_calcInputValue) {
+        var displayValue = document.getElementById("display-value")
+        displayValue.innerHTML = ` ${_calcInputValue}`;
+      }
+    });
+
+
+  </script>
+</html>
+
